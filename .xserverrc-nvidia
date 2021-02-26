@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -z "$XDG_VTNR" ]; then
+  exec /usr/bin/X -nolisten tcp "$@" -configdir xinit-nvidia
+else
+  exec /usr/bin/X -nolisten tcp -keeptty "$@" "vt$XDG_VTNR" -configdir xinit-nvidia
+fi
